@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "type": "module",
   "description": "Scraper for SoundCloud",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gkevinb/scrape-soundcloud"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
