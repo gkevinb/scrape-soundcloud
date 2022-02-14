@@ -1,13 +1,13 @@
 {
   "name": "scrape-soundcloud",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Scraper for SoundCloud",
   "repository": {
     "type": "git",
     "url": "https://github.com/gkevinb/scrape-soundcloud"
   },
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
