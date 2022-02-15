@@ -5,6 +5,7 @@ node_modules
 #----
 
 src
-tesconfig.json
+test
+tsconfig.json
 
 .gitignore
