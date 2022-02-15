@@ -1,0 +1,46 @@
+{
+  "avatar_url": "https://i1.sndcdn.com/avatars-jEpyeFHwRB0yFHeS-XN6s6A-large.jpg",
+  "city": null,
+  "comments_count": 2,
+  "country_code": null,
+  "created_at": "2017-09-17T14:23:17Z",
+  "creator_subscriptions": [{ "product": { "id": "creator-pro-unlimited" } }],
+  "creator_subscription": { "product": { "id": "creator-pro-unlimited" } },
+  "description": "All my mixes are now on SoundCloud 🤗\n\nQuestion: How do I listen to my favorite mix? 🤔\n➡ Use the search bar (at the top) in this way: \"tenpers + mix title/keywords\"\n➡ Find it in the big playlist \"Tenpers Universe 🌌\"\n\nEnjoy! 💚",
+  "followers_count": 4499,
+  "followings_count": 0,
+  "first_name": "Tenpers",
+  "full_name": "Tenpers on Soundcloud",
+  "groups_count": 0,
+  "id": 332822334,
+  "kind": "user",
+  "last_modified": "2021-11-21T22:32:11Z",
+  "last_name": "on Soundcloud",
+  "likes_count": 7,
+  "playlist_likes_count": 2,
+  "permalink": "tenpers",
+  "permalink_url": "https://soundcloud.com/tenpers",
+  "playlist_count": 18,
+  "reposts_count": null,
+  "track_count": 172,
+  "uri": "https://api.soundcloud.com/users/332822334",
+  "urn": "soundcloud:users:332822334",
+  "username": "Tenpers",
+  "verified": false,
+  "visuals": {
+    "urn": "soundcloud:users:332822334",
+    "enabled": true,
+    "visuals": [
+      {
+        "urn": "soundcloud:visuals:75597170",
+        "entry_time": 0,
+        "visual_url": "https://i1.sndcdn.com/visuals-000332822334-3dJR0l-original.jpg"
+      }
+    ],
+    "tracking": null
+  },
+  "badges": { "pro": false, "pro_unlimited": true, "verified": false },
+  "station_urn": "soundcloud:system-playlists:artist-stations:332822334",
+  "station_permalink": "artist-stations:332822334",
+  "url": "/tenpers"
+}
