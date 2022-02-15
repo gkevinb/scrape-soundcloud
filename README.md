@@ -1,4 +1,4 @@
-# scraper-soundcloud
+# scrape-soundcloud
 
 Scraper for Soundcloud. No API key needed for the SoundCloud API since the data is extracted directly from the static HTML accessible via a SoundCloud link.
 
@@ -8,4 +8,4 @@ This npm package will be polished and developed further soon to make it more rob
 
 ## Usage
 
-Check `text/test.js` for an example.
+Check `test/test.js` for an example.

@@ -1,4 +1,8 @@
-import { SoundCloudScraper } from "../src/index.js"
+// import { SoundCloudScraper } from "../src/index.js"
+
+const { SoundCloudScraper } = require("../lib/index.js")
+
+// import { SoundCloudScraper} from "../lib/index.js"
 
 const sound = new SoundCloudScraper()
 

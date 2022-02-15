@@ -2,21 +2,21 @@ import cheerio from "cheerio";
 import axios from "axios";
 
 class SoundCloudScraper {
-  isSoundCloudUrl = (url) => {
+  isSoundCloudUrl = (url: string) => {
     if (!url) {
       return false;
     }
     return url.startsWith("https://soundcloud.com/");
   };
 
-  extractHydrationData = async (url) => {
+  extractHydrationData = async (url: string) => {
     try {
       const HYDRATION_STRING = "window.__sc_hydration = ";
       const response = await axios.get(url);
       let $ = cheerio.load(response.data);
       let scriptData;
-      for (let script of $("script:not([src])")) {
-        scriptData = script.children[0].data;
+      for (let script of $("script:not([src])").toArray()) {
+        scriptData = (script.children[0] as any).data;
         if (scriptData.startsWith(HYDRATION_STRING)) {
           return JSON.parse(
             scriptData.replace(HYDRATION_STRING, "").slice(0, -1)
@@ -30,7 +30,7 @@ class SoundCloudScraper {
     }
   };
 
-  getSound = async (url) => {
+  getSound = async (url: string) => {
     if (!this.isSoundCloudUrl(url)) {
       console.log("Not a SoundCloud url given");
       return {};
@@ -46,7 +46,7 @@ class SoundCloudScraper {
     return {};
   };
 
-  getUser = async (url) => {
+  getUser = async (url: string) => {
     if (!this.isSoundCloudUrl(url)) {
       console.log("Not a SoundCloud url given");
       return {};
