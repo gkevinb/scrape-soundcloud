@@ -11,7 +11,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "ts": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test --timeout 5000"
   },
   "keywords": [
     "scraper",
@@ -24,6 +24,8 @@
     "cheerio": "^1.0.0-rc.10"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.1",
     "typescript": "^4.5.5"
   }
 }

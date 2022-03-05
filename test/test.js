@@ -1,31 +1,33 @@
-// import { SoundCloudScraper } from "../src/index.js"
+import { SoundCloudScraper } from "../lib/index.js";
+import * as sound from "../examples/sound.json" assert {type: "json"};
+import * as user from "../examples/user.json" assert {type: "json"};
+import { assert, expect } from "chai"
 
-import { SoundCloudScraper} from "../lib/index.js"
+describe("Soundcloud", function () {
+  it("Pokemon Jazz Covers", async function () {
+    const soundScraper = new SoundCloudScraper();
+    let url =
+      "https://soundcloud.com/tenpers/pokemon-jazz-covers";
+    let res = await soundScraper.getSound(url);
 
-const sound = new SoundCloudScraper()
+    expect(Object.keys(sound.default)).to.eql(Object.keys(res));
+  });
 
-let url = "https://soundcloud.com/tenpers/kingdom-hearts-relaxing-music-rainstorm-sounds"
-let res = await sound.getSound(url)
+  it("Kingdom Hearts relaxing music", async function () {
+    const soundScraper = new SoundCloudScraper();
+    let url =
+      "https://soundcloud.com/tenpers/kingdom-hearts-relaxing-music-rainstorm-sounds";
+    let res = await soundScraper.getSound(url);
 
+    expect(Object.keys(sound.default)).to.eql(Object.keys(res));
+  });
 
+  it("User for Kingdom Hearts relaxing music", async function () {
+    const soundScraper = new SoundCloudScraper();
+    let url =
+      "https://soundcloud.com/tenpers/kingdom-hearts-relaxing-music-rainstorm-sounds";
+    let res = await soundScraper.getUser(url);
 
-
-
-console.log(res)
-
-// file system module to perform file operations
-import fs from "fs"
- 
- 
-// stringify JSON Object
-var jsonContent = JSON.stringify(res);
-console.log(jsonContent);
- 
-fs.writeFile("output.json", jsonContent, 'utf8', function (err) {
-    if (err) {
-        console.log("An error occured while writing JSON Object to File.");
-        return console.log(err);
-    }
- 
-    console.log("JSON file has been saved.");
+    expect(Object.keys(user.default)).to.eql(Object.keys(res));
+  });
 });
