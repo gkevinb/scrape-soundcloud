@@ -189,20 +189,41 @@ class SoundCloudScraper {
     return url.startsWith("https://soundcloud.com/");
   };
 
+  getHtmlFromUrl = async (url :string) => {
+    const response = await axios.get(url);
+    return response.data
+  }
+
+  extractDataFromHtml = (htmlString: string) => {
+    const HYDRATION_STRING = "window.__sc_hydration = ";
+    let $ = cheerio.load(htmlString);
+    let scriptString: string;
+    for (let script of $("script:not([src])").toArray()) {
+      scriptString = (script.children[0] as any).data;
+      if (scriptString.startsWith(HYDRATION_STRING)) {
+        return JSON.parse(
+          scriptString.replace(HYDRATION_STRING, "").slice(0, -1)
+        );
+      }
+    }
+  }
+
+  extractSound = (htmlString: string) => {
+    const listOfHyrdrationData : Array<HydrationObject> = this.extractDataFromHtml(htmlString)
+    for (let obj of listOfHyrdrationData) {
+      if (obj.hydratable === "sound") {
+        return obj.data as Sound;
+      }
+    }
+    console.log("No sound data found");
+    return {} as Sound;
+  }
+
   extractHydrationData = async (url: string) => {
     try {
-      const HYDRATION_STRING = "window.__sc_hydration = ";
-      const response = await axios.get(url);
-      let $ = cheerio.load(response.data);
-      let scriptString: string;
-      for (let script of $("script:not([src])").toArray()) {
-        scriptString = (script.children[0] as any).data;
-        if (scriptString.startsWith(HYDRATION_STRING)) {
-          return JSON.parse(
-            scriptString.replace(HYDRATION_STRING, "").slice(0, -1)
-          );
-        }
-      }
+      const htmlString = await this.getHtmlFromUrl(url);
+      const data = this.extractDataFromHtml(htmlString)
+      return data
     } catch (error) {
       console.error(error);
       console.log("No hydration data");
@@ -216,14 +237,8 @@ class SoundCloudScraper {
       return {} as Sound;
     }
 
-    const listOfHyrdrationData: Array<HydrationObject> = await this.extractHydrationData(url);
-    for (let obj of listOfHyrdrationData) {
-      if (obj.hydratable === "sound") {
-        return obj.data as Sound;
-      }
-    }
-    console.log("No sound data found");
-    return {} as Sound;
+    const htmlString: string = await this.getHtmlFromUrl(url)
+    return this.extractSound(htmlString) as Sound;
   };
 
   getUser = async (url: string): Promise<User> => {

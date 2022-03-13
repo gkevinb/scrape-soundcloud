@@ -165,6 +165,9 @@ export interface HydrationObject {
 }
 declare class SoundCloudScraper {
     isSoundCloudUrl: (url: string) => boolean;
+    getHtmlFromUrl: (url: string) => Promise<any>;
+    extractDataFromHtml: (htmlString: string) => any;
+    extractSound: (htmlString: string) => Sound;
     extractHydrationData: (url: string) => Promise<any>;
     getSound: (url: string) => Promise<Sound>;
     getUser: (url: string) => Promise<User>;
